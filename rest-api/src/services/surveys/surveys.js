@@ -1,5 +1,6 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/service.html
 import { authenticate } from '@feathersjs/authentication'
+import { iff } from 'feathers-hooks-common'
 
 import { hooks as schemaHooks } from '@feathersjs/schema'
 import {
@@ -34,13 +35,17 @@ export const survey = (app) => {
   app.service(surveyPath).hooks({
     around: {
       all: [
-        authenticate('jwt'),
+        // authenticate('jwt'),
         schemaHooks.resolveExternal(surveyExternalResolver),
         schemaHooks.resolveResult(surveyResolver)
       ]
     },
     before: {
-      all: [schemaHooks.validateQuery(surveyQueryValidator), schemaHooks.resolveQuery(surveyQueryResolver)],
+      all: [
+        iff((context) => !context.params.query.hash, authenticate('jwt')),
+        schemaHooks.validateQuery(surveyQueryValidator),
+        schemaHooks.resolveQuery(surveyQueryResolver)
+      ],
       find: [checkQuery],
       get: [checkQuery],
       create: [schemaHooks.validateData(surveyDataValidator), schemaHooks.resolveData(surveyDataResolver)],
