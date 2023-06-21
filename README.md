@@ -7,8 +7,8 @@ _Kliensoldali webprogramozás 2. beadandó_
 Kérlek, töltsétek ki az adataitokkal beadás előtt!
 
 ```txt
-<Hallgató neve>
-<Neptun kódja>
+Csányi Szabolcs Attila
+BDJB68
 Kliensoldali webprogramozás - beadandó
 Ezt a megoldást a fent írt hallgató küldte be és készítette a Kliensoldali webprogramozás kurzus számonkéréséhez.
 Kijelentem, hogy ez a megoldás a saját munkám. Nem másoltam vagy használtam harmadik féltől
@@ -179,29 +179,29 @@ Az egész projektet tömörítsd be, kliensestül, szerverestül, és azt tölts
 
 Összesen 30 pont érhető el.
 
-- React használata (kötelező)
-- Redux használata (kötelező)
-- Navigáció megfelelően változik a be- és kijelentkezésnek megfelelően (1pt)
-- Főoldal megjelenik (1pt)
-- Regisztráció működik (1pt)
-- Bejelentkezés működik (1pt)
-- Új kérdőív, Kérdőíveim: csak bejelentkezve érhetőek el (1pt)
-- Új kérdőív: új kérdőív mentésének helyes működése (2pt)
-- Kérdőíveim: megjelennek a kérdőívek az elérhető funkciókkal (2pt)
-- Kérdőíveim: módosítás helyes működése (2pt)
-- Kérdőíveim: törlés helyes működése (2pt)
-- Kérdőíveim: hivatkozás helyes működése (1pt)
-- Kérdőív: a kérdőív kérdései megjelennek (3pt)
-- Kérdőív: a kérdések lapozható formában jelennek meg a lapok megnevezéseivel, a lapok közötti navigáció megfelelő (2pt)
-- Kérdőív: csak kitöltött oldal esetén lehet továbblapozni (1pt)
-- Kérdőív: lapozón vizuálisan látszik, hogy mely lapnál tartunk (1pt)
-- Kérdőív: beküldés helyes működése (2pt)
-- Válaszok: a kiválasztott kérdőívre adott válaszok megjelennek (2pt)
-- Profil: csak bejelentkezve érhető el, megfelelő tartalommal (2pt)
-- Profil: Kijelentkezés gomb működik (1pt)
-- Igényes megjelenés (2pt)
-- Pluszok: a kérdőíveim lista lapozható (pl. 5-ösével) (+2pt)
-- Pluszok: a válaszok lista lapozható (pl. 10-esével) (+2pt)
-- Pluszok: a kérdőív linkje egy gombra kattintva a vágólapra másolható (+1pt)
-- 1 hét késés (-3pt)
-- 2 hét késés (-6pt)
+- [X] React használata (kötelező)
+- [ ] Redux használata (kötelező)
+- [ ] Navigáció megfelelően változik a be- és kijelentkezésnek megfelelően (1pt)
+- [X] Főoldal megjelenik (1pt)
+- [ ] Regisztráció működik (1pt)
+- [ ] Bejelentkezés működik (1pt)
+- [ ] Új kérdőív, Kérdőíveim: csak bejelentkezve érhetőek el (1pt)
+- [ ] Új kérdőív: új kérdőív mentésének helyes működése (2pt)
+- [ ] Kérdőíveim: megjelennek a kérdőívek az elérhető funkciókkal (2pt)
+- [ ] Kérdőíveim: módosítás helyes működése (2pt)
+- [ ] Kérdőíveim: törlés helyes működése (2pt)
+- [ ] Kérdőíveim: hivatkozás helyes működése (1pt)
+- [ ] Kérdőív: a kérdőív kérdései megjelennek (3pt)
+- [ ] Kérdőív: a kérdések lapozható formában jelennek meg a lapok megnevezéseivel, a lapok közötti navigáció megfelelő (2pt)
+- [ ] Kérdőív: csak kitöltött oldal esetén lehet továbblapozni (1pt)
+- [ ] Kérdőív: lapozón vizuálisan látszik, hogy mely lapnál tartunk (1pt)
+- [ ] Kérdőív: beküldés helyes működése (2pt)
+- [ ] Válaszok: a kiválasztott kérdőívre adott válaszok megjelennek (2pt)
+- [ ] Profil: csak bejelentkezve érhető el, megfelelő tartalommal (2pt)
+- [ ] Profil: Kijelentkezés gomb működik (1pt)
+- [ ] Igényes megjelenés (2pt)
+- [ ] Pluszok: a kérdőíveim lista lapozható (pl. 5-ösével) (+2pt)
+- [ ] Pluszok: a válaszok lista lapozható (pl. 10-esével) (+2pt)
+- [ ] Pluszok: a kérdőív linkje egy gombra kattintva a vágólapra másolható (+1pt)
+- [X] 1 hét késés (-3pt)
+- [X] 2 hét késés (-6pt)
