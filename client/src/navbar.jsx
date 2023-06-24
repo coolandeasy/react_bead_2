@@ -1,30 +1,64 @@
-import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import {Outlet} from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import {Outlet, useNavigate} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {useSelector} from "react-redux";
+import {loginSlice} from "./store/features/login/loginSlice.js";
+import {store} from "./store/store.js";
 
 export function NavBar() {
 
+	const isLoggedIn = useSelector(state => state.login.token !== "");
+	const nav = useNavigate();
+
+	const handleLogout = () => {
+		console.log("Fuck you, Ezekiel!");
+		store.dispatch(loginSlice.actions.logout());
+		nav("../");
+	};
+
+	function loggedOut() {
+		return (
+			<>
+				<Nav className="me-auto">
+					<Navbar.Brand href="/">Surveys</Navbar.Brand>
+				</Nav>
+				<Nav className="ms-auto">
+					<Navbar.Collapse className="justify-content-end">
+						<Nav.Link href="/register">Register</Nav.Link>
+						<Nav.Link href="/login">Login</Nav.Link>
+					</Navbar.Collapse>
+				</Nav>
+			</>
+		)
+	}
+
+	function loggedIn() {
+		return (
+			<>
+				<Nav className="me-auto">
+					<Navbar.Brand href="/">Surveys</Navbar.Brand>
+					<Nav.Link href="/survey/my_surveys">My Surveys</Nav.Link>
+					{/*<Nav.Link href="/survey/new_survey">New survey</Nav.Link>*/}
+					<Nav.Link href="/answers">Answers</Nav.Link>
+				</Nav>
+				<Nav className="ms-auto">
+					<Navbar.Collapse className="justify-content-end">
+						<Nav.Link href="/profile">Profile</Nav.Link>
+						<Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+					</Navbar.Collapse>
+				</Nav>
+			</>
+		)
+	}
+
 	return (
 		<>
-			<Navbar expand="lg" className="bg-body-tertiary">
+			<Navbar expand="lg" sticky={"top"} className="bg-body-tertiary">
 				<Container>
-					<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav"/>
 					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="me-auto">
-							<Nav.Link href="#home">Home</Nav.Link>
-							<Nav.Link href="#link">Link</Nav.Link>
-							<NavDropdown title="Dropdown" id="basic-nav-dropdown">
-								<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.2">
-									Another action
-								</NavDropdown.Item>
-								<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-								<NavDropdown.Divider/>
-								<NavDropdown.Item href="#action/3.4">
-									Separated link
-								</NavDropdown.Item>
-							</NavDropdown>
-						</Nav>
+						{ isLoggedIn ? loggedIn() : loggedOut() }
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>

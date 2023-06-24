@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
 
-export function MySurveys() {
+export function Profile() {
 
 	const nav = useNavigate();
 	const {token} = useSelector(state => state.login);
@@ -11,6 +11,6 @@ export function MySurveys() {
 	}, [nav, token]);
 
 	return (
-		<h1>These are my surveys!</h1>
+		<h1>This is my profile!</h1>
 	)
 }

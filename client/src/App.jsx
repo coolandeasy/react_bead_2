@@ -8,6 +8,11 @@ import {Home} from "./pages/home.jsx";
 import {NewSurvey} from "./pages/new_survey.jsx";
 import {MySurveys} from "./pages/my_surveys.jsx";
 import {Survey} from "./pages/survey.jsx";
+import {Login} from "./pages/login.jsx";
+import {Answers} from "./pages/answers.jsx";
+import {Profile} from "./pages/profile.jsx";
+import {Register} from "./pages/register.jsx";
+import {useSelector} from "react-redux";
 
 function App() {
 
@@ -21,8 +26,10 @@ function App() {
                         <Route path={"my_surveys"} element={<MySurveys />}/>
                         <Route path={"*"} element={<Survey />}/>
                     </Route>
-                    <Route path={"answers"} element={"Answers"}/>
-                    <Route path={"profile"} element={"Profile"}/>
+                    <Route path={"answers"} element={<Answers />}/>
+                    <Route path={"profile"} element={<Profile />}/>
+                    <Route path={"login"} element={<Login />}/>
+                    <Route path={"register"} element={<Register />}/>
                 </Route>
             </Routes>
         </BrowserRouter>
