@@ -15,6 +15,7 @@ export function NavBar() {
 		console.log("Fuck you, Ezekiel!");
 		persistor.purge().then(() => nav("../login"));
 	};
+
 	// persistor.purge();
 
 	function loggedOut() {
@@ -57,7 +58,7 @@ export function NavBar() {
 			<Navbar expand="lg" sticky={"top"} className="bg-body-tertiary">
 				<Container>
 					<Navbar.Collapse id="basic-navbar-nav">
-						{ isLoggedIn ? loggedIn() : loggedOut() }
+						{isLoggedIn ? loggedIn() : loggedOut()}
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>

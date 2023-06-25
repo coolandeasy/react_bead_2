@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
-import {useGetAllWithLimitsQuery} from "../store/features/survey/surveyApiSlice.js";
+import {useDeleteExistingMutation, useGetAllWithLimitsQuery} from "../store/features/survey/surveyApiSlice.js";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import {AiOutlineDelete, AiOutlineEdit, AiOutlineLink} from "react-icons/ai";
@@ -32,16 +32,16 @@ export function MySurveys() {
 			<div style={{maxHeight: "550px", overflowX: "auto"}}>
 				<Table striped hover borderless>
 					<thead>
-						<tr>
-							<th>Name</th>
-							<th style={{textAlign: "right"}}>Actions</th>
-						</tr>
+					<tr>
+						<th>Name</th>
+						<th style={{textAlign: "right"}}>Actions</th>
+					</tr>
 					</thead>
 					<tbody>
-						{generateTableBody(surveyList)}
+					{generateTableBody(surveyList)}
 					</tbody>
 					<tfoot>
-						<CustomPagination />
+					<CustomPagination/>
 					</tfoot>
 				</Table>
 			</div>
@@ -51,20 +51,22 @@ export function MySurveys() {
 
 export function SurveyRow(props) {
 
+	const {hash, id, name} = props.survey;
 	const nav = useNavigate();
-	const {content, createdAt, hash, id, name, user, userId} = props.survey;
+	const [deleteSurvey] = useDeleteExistingMutation();
 	const btnStyle = {backgroundColor: "unset", border: "unset", padding: "0 4px 0 4px"};
+
 	return (
 		<tr>
 			<td><a href={`http://localhost:5173/survey/${hash}`}>{name}</a></td>
 			<td style={{textAlign: "right"}}>
-				<Button name={"checkSurveyComments"} style={btnStyle} onClick={() => {
-					console.log("checkSurveyComments");
+				<Button name={"checkSurveyAnswers"} style={btnStyle} onClick={() => {
+					console.log("checkSurveyAnswers");
+					nav(`../../answers/&?hash=${hash}`);
 				}}>
 					<RiQuestionAnswerLine size={"1.4em"} style={{color: "black"}}/>
 				</Button>
 				<Button name={"copySurveyLink"} style={btnStyle} onClick={() => {
-					console.log("copySurveyLink");
 					navigator.clipboard.writeText(`http://localhost:5173/survey/&?hash=${hash}`).then(
 						() => alert("Link copied to clipboard!")
 					);
@@ -72,13 +74,14 @@ export function SurveyRow(props) {
 					<AiOutlineLink size={"1.4em"} style={{color: "black"}}/>
 				</Button>
 				<Button name={"editSurvey"} style={btnStyle} onClick={() => {
-					console.log("editSurvey");
 					nav(`../edit_survey/&?hash=${hash}`);
 				}}>
 					<AiOutlineEdit size={"1.4em"} style={{color: "blue"}}/>
 				</Button>
 				<Button name={"deleteSurvey"} style={btnStyle} onClick={() => {
 					console.log("deleteSurvey");
+					deleteSurvey(id);
+					window.location.reload();
 				}}>
 					<AiOutlineDelete size={"1.4em"} style={{color: "red"}}/>
 				</Button>

@@ -23,6 +23,9 @@ export const surveySlice = createSlice({
 		},
 		setSkip: (state, {skip}) => {
 			state.skip = skip;
+		},
+		redraw: (state) => {
+			state.skip = state.skip;
 		}
 		// logout: (state) => {
 		// 	state.token = initialState.token;
@@ -51,6 +54,7 @@ export const {
 	getAllWithLimits,
 	setLimit,
 	setSkip,
+	redraw,
 } = surveySlice.actions;
 
 export default surveySlice.reducer;

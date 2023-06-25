@@ -6,7 +6,6 @@ export function Answers() {
 
 	const nav = useNavigate();
 	const {token} = useSelector(state => state.user);
-	console.log(token)
 	useEffect(() => {
 		if (token === "") nav("../");
 	}, [nav, token]);

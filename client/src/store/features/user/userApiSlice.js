@@ -17,7 +17,7 @@ export const userApi = createApi({
 	reducerPath: 'userApi',
 	baseQuery: baseQuery,
 	extractRehydrationInfo(action, {reducerPath}) {
-		if (action.type === REHYDRATE)	return action.payload[reducerPath];
+		if (action.type === REHYDRATE) return action.payload[reducerPath];
 	},
 	tagTypes: ['POST'],
 	endpoints: (builder) => ({
@@ -29,7 +29,7 @@ export const userApi = createApi({
 					body: body
 				}
 			},
-			async onQueryStarted(body, {dispatch, queryFulfilled}){
+			async onQueryStarted(body, {dispatch, queryFulfilled}) {
 				try {
 					dispatch(userSlice.actions.pending(true));
 					const {data} = await queryFulfilled;
@@ -50,7 +50,7 @@ export const userApi = createApi({
 					body: body
 				}
 			},
-			async onQueryStarted(body, {dispatch, queryFulfilled}){
+			async onQueryStarted(body, {dispatch, queryFulfilled}) {
 				try {
 					dispatch(userSlice.actions.pending(true));
 					const {data} = await queryFulfilled;

@@ -18,13 +18,14 @@ export function CustomPagination() {
 	return (
 		<tr>
 			<td>
-				<FormSelect style={{width: "4.5em"}} onChange={(e) => dispatch({type: "survey/setLimit", limit: e.target.value})}>
+				<FormSelect style={{width: "4.5em"}}
+							onChange={(e) => dispatch({type: "survey/setLimit", limit: e.target.value})}>
 					<option>5</option>
 					<option>10</option>
 				</FormSelect>
 			</td>
 			<td style={{float: "right"}}>
-				<Pagination count={Math.ceil(total / limit)} page={page} shape={"rounded"} onChange={handlePageChange} />
+				<Pagination count={Math.ceil(total / limit)} page={page} shape={"rounded"} onChange={handlePageChange}/>
 			</td>
 		</tr>
 	)

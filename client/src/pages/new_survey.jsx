@@ -58,8 +58,7 @@ export function NewSurvey() {
 			let sData = page.split("\n");
 			if (idx === 0) {
 				survey["name"] = sData[0];
-			} else
-			{
+			} else {
 				let page = {};
 				let questions = [];
 				sData.forEach((q, i) => {
@@ -79,11 +78,18 @@ export function NewSurvey() {
 				content: JSON.stringify(survey.content)
 			});
 		} else { // edited survey
-			modifySurvey({data: {
-				name: survey.name,
-				content: JSON.stringify(survey.content)
-			}, id: ID});
+			modifySurvey({
+				data: {
+					name: survey.name,
+					content: JSON.stringify(survey.content)
+				}, id: ID
+			});
 		}
+		document.querySelector("#text").disabled = true;
+		alert("Survey successfully " + (skip ? "created!" : "modified!"));
+		setTimeout(() => {
+			nav("../my_surveys");
+		}, 500);
 	};
 
 	return (

@@ -35,7 +35,8 @@ export function Login() {
 		}
 	}, [nav, success, token]);
 
-	const failed = <FormText className={"text-danger"}>Profile with this email and password combination does not exist!<br/></FormText>;
+	const failed = <FormText className={"text-danger"}>Profile with this email and password combination does not
+		exist!<br/></FormText>;
 	const succeeded = <FormText className={"text-success"}>Login successful!!<br/></FormText>;
 
 	return (

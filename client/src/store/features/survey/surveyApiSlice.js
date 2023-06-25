@@ -82,9 +82,10 @@ export const surveyApi = createApi({
 		}),
 		deleteExisting: builder.mutation({
 			query(id) {
+				console.log(id);
 				return {
 					url: `surveys/${id}`,
-					method: "DEL"
+					method: "DELETE"
 				}
 			},
 			// async onQueryStarted(body, {dispatch, queryFulfilled}) {

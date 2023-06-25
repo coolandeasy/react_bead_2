@@ -4,7 +4,7 @@ import userReducer from './features/user/userSlice.js';
 import surveyReducer from './features/survey/surveySlice.js';
 import {userApi} from './features/user/userApiSlice.js';
 import {surveyApi} from "./features/survey/surveyApiSlice.js";
-import { persistReducer, persistStore } from 'redux-persist';
+import {persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from "redux-thunk";
 
