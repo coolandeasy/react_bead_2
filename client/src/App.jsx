@@ -1,6 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {NavBar} from "./navbar.jsx";
@@ -12,7 +9,6 @@ import {Login} from "./pages/login.jsx";
 import {Answers} from "./pages/answers.jsx";
 import {Profile} from "./pages/profile.jsx";
 import {Register} from "./pages/register.jsx";
-import {useSelector} from "react-redux";
 
 function App() {
 
@@ -21,7 +17,7 @@ function App() {
             <Routes>
                 <Route path={"/"} element={<NavBar />}>
                     <Route index element={<Home/>} />
-                    <Route path={"survey/"}>
+                    <Route path={"survey"}>
                         <Route path={"new_survey"} element={<NewSurvey />}/>
                         <Route path={"my_surveys"} element={<MySurveys />}/>
                         <Route path={"*"} element={<Survey />}/>

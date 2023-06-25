@@ -55,7 +55,7 @@ export function SurveyRow(props) {
 	const btnStyle = {backgroundColor: "unset", border: "unset", padding: "0 4px 0 4px"};
 	return (
 		<tr>
-			<td>{name}</td>
+			<td><a href={`http://localhost:5173/survey/${hash}`}>{name}</a></td>
 			<td style={{textAlign: "right"}}>
 				<Button name={"checkSurveyComments"} style={btnStyle} onClick={() => {
 					console.log("checkSurveyComments");
@@ -64,6 +64,9 @@ export function SurveyRow(props) {
 				</Button>
 				<Button name={"copySurveyLink"} style={btnStyle} onClick={() => {
 					console.log("copySurveyLink");
+					navigator.clipboard.writeText(`http://localhost:5173/survey/${hash}`).then(
+						() => alert("Link copied to clipboard!")
+					);
 				}}>
 					<AiOutlineLink size={"1.4em"} style={{color: "black"}}/>
 				</Button>
@@ -83,10 +86,12 @@ export function SurveyRow(props) {
 }
 
 function generateTableBody(surveys) {
-	if (surveys !== []) {
+	if (surveys !== [] && surveys.length > 0) {
 		return surveys.map((survey) => (<SurveyRow key={survey.id} survey={survey}/>));
 	}
-	return <tr>
-		<td colSpan={4}><h6>No custom tests are available. Add some!</h6></td>
-	</tr>;
+	return (
+		<tr>
+			<td colSpan={2}><h6>No custom tests are available. Add some!</h6></td>
+		</tr>
+	);
 }

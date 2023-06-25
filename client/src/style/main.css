@@ -8,6 +8,10 @@
     padding: 2em;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
