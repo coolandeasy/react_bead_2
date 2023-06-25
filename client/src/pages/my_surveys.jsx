@@ -18,9 +18,8 @@ export function MySurveys() {
 		if (token === "") nav("../../");
 	}, [nav, token]);
 
-	const surveysWithLimits = useGetAllWithLimitsQuery(
-		`userId=${user.id}&$skip=${skip}&$limit=${limit}&$sort[createdAt]=${-1}`
-	);
+	const arg = `userId=${user.id}&$skip=${skip}&$limit=${limit}&$sort[createdAt]=${-1}`;
+	const surveysWithLimits = useGetAllWithLimitsQuery(arg);
 	let surveyList = [];
 	if (surveysWithLimits.status === 'fulfilled') {
 		surveyList = surveysWithLimits.currentData.data;
@@ -58,7 +57,7 @@ export function SurveyRow(props) {
 
 	return (
 		<tr>
-			<td><a href={`http://localhost:5173/survey/${hash}`}>{name}</a></td>
+			<td><a href={`http://localhost:5173/survey/&?hash=${hash}`}>{name}</a></td>
 			<td style={{textAlign: "right"}}>
 				<Button name={"checkSurveyAnswers"} style={btnStyle} onClick={() => {
 					console.log("checkSurveyAnswers");

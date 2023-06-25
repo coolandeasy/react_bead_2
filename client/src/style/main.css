@@ -8,6 +8,13 @@
     padding: 2em;
 }
 
+.box {
+    text-align: left;
+    border: 1px lightgrey solid;
+    padding: 1em;
+    margin: -1px;
+}
+
 a {
     text-decoration: none;
 }

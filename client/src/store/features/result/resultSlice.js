@@ -8,11 +8,11 @@ const initialState = {
 	skip: 0
 };
 
-export const surveySlice = createSlice({
-	name: 'survey',
+export const resultSlice = createSlice({
+	name: 'result',
 	initialState,
 	reducers: {
-		getAllWithLimits: (state, data) => {
+		getAllByID: (state, data) => {
 			state.data = data.payload.data;
 			state.total = data.payload.total;
 			state.limit = data.payload.limit;
@@ -33,9 +33,9 @@ export const surveySlice = createSlice({
 })
 
 export const {
-	getAllWithLimits,
+	getAllByID,
 	setLimit,
 	setSkip
-} = surveySlice.actions;
+} = resultSlice.actions;
 
-export default surveySlice.reducer;
+export default resultSlice.reducer;

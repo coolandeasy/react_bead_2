@@ -40,8 +40,8 @@ export function NavBar() {
 				<Nav className="me-auto">
 					<Navbar.Brand href="/">Surveys</Navbar.Brand>
 					<Nav.Link href="/survey/my_surveys">My Surveys</Nav.Link>
+					<Nav.Link href="/answers">Answers</Nav.Link>
 					<Nav.Link href="/survey/new_survey">New survey</Nav.Link>
-					{/*<Nav.Link href="/answers">Answers</Nav.Link>*/}
 				</Nav>
 				<Nav className="ms-auto">
 					<Navbar.Collapse className="justify-content-end">

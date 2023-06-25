@@ -9,6 +9,7 @@ import {Login} from "./pages/login.jsx";
 import {Answers} from "./pages/answers.jsx";
 import {Profile} from "./pages/profile.jsx";
 import {Register} from "./pages/register.jsx";
+import {SurveyAnswers} from "./pages/survey_answers.jsx";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
 						<Route path={"my_surveys"} element={<MySurveys/>}/>
 						<Route path={"*"} element={<Survey/>}/>
 					</Route>
-					<Route path={"answers/*"} element={<Answers/>}/>
+					<Route path={"answers/*"} element={<SurveyAnswers/>}/>
+					<Route path={"answers"} element={<Answers/>}/>
 					<Route path={"profile"} element={<Profile/>}/>
 					<Route path={"login"} element={<Login/>}/>
 					<Route path={"register"} element={<Register/>}/>
