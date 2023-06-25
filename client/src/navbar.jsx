@@ -4,19 +4,18 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Outlet, useNavigate} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useSelector} from "react-redux";
-import {loginSlice} from "./store/features/login/loginSlice.js";
-import {store} from "./store/store.js";
+import {persistor} from "./store/store.js";
 
 export function NavBar() {
 
-	const isLoggedIn = useSelector(state => state.login.token !== "");
+	const isLoggedIn = useSelector(state => state.user.token !== "");
 	const nav = useNavigate();
 
 	const handleLogout = () => {
 		console.log("Fuck you, Ezekiel!");
-		store.dispatch(loginSlice.actions.logout());
-		nav("../");
+		persistor.purge().then(() => nav("../login"));
 	};
+	// persistor.purge();
 
 	function loggedOut() {
 		return (

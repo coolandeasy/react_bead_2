@@ -5,9 +5,10 @@ import {useEffect} from "react";
 export function NewSurvey() {
 
 	const nav = useNavigate();
-	const {token} = useSelector(state => state.login);
+	const {token} = useSelector(state => state.user);
+	console.log(token)
 	useEffect(() => {
-		if (token !== "") nav("../");
+		if (token === "") nav("../");
 	}, [nav, token]);
 
 	return (

@@ -1,7 +1,9 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {setupListeners} from "@reduxjs/toolkit/query";
-import loginReducer from './features/login/loginSlice';
-import {loginApi} from './features/login/loginApiSlice';
+import userReducer from './features/user/userSlice.js';
+import surveyReducer from './features/survey/surveySlice.js';
+import {userApi} from './features/user/userApiSlice.js';
+import {surveyApi} from "./features/survey/surveyApiSlice.js";
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from "redux-thunk";
@@ -9,21 +11,24 @@ import thunk from "redux-thunk";
 const persistConfig = {
 	key: 'root',
 	storage,
-	blacklist: [loginApi.reducerPath]
+	blacklist: [userApi.reducerPath]
 }
 
-const rootReducer = combineReducers({
-	login: loginReducer
-})
+// const rootReducer = combineReducers({
+// 	user: userReducer,
+// 	survey: surveyReducer
+// })
 
-const persistedReducer = persistReducer(persistConfig, loginReducer);
+const persistedUserReducer = persistReducer(persistConfig, userReducer);
 
 export const store = configureStore({
 	reducer: {
-		login: persistedReducer,
-		[loginApi.reducerPath]: loginApi.reducer,
+		user: persistedUserReducer,
+		survey: surveyReducer,
+		[userApi.reducerPath]: userApi.reducer,
+		[surveyApi.reducerPath]: surveyApi.reducer,
 	},
-	middleware: [thunk, loginApi.middleware],
+	middleware: [thunk, userApi.middleware, surveyApi.middleware],
 });
 
 export const persistor = persistStore(store);

@@ -1,15 +1,17 @@
 import {Button, FloatingLabel, Form, FormControl, FormText} from "react-bootstrap";
 import "../style/main.css";
 import {Link, useNavigate} from "react-router-dom";
-import {useLoginUserMutation} from "../store/features/login/loginApiSlice.js";
+import {useLoginUserMutation} from "../store/features/user/userApiSlice.js";
 import {useEffect} from "react";
 import {useSelector} from "react-redux";
 
 export function Login() {
 
 	const nav = useNavigate();
-	const {success, pending, token} = useSelector(state => state.login);
+	const {success, pending, token} = useSelector(state => state.user);
 	const [loginUser, loginResp] = useLoginUserMutation();
+
+	// console.log(success, pending, token)
 
 	const formSubmit = (event) => {
 		event.preventDefault()
@@ -29,9 +31,8 @@ export function Login() {
 			setTimeout(() => {
 				nav("../");
 				btn.disabled = false;
-			}, 1500);
+			}, 500);
 		}
-		if (token !== "") nav("../");
 	}, [nav, success, token]);
 
 	const failed = <FormText className={"text-danger"}>Profile with this email and password combination does not exist!<br/></FormText>;

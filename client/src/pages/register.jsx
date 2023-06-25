@@ -1,15 +1,15 @@
 import {Button, FloatingLabel, Form, FormControl, FormText} from "react-bootstrap";
 import "../style/main.css";
-import {useNewUserMutation} from "../store/features/login/loginApiSlice.js";
+import {useNewUserMutation} from "../store/features/user/userApiSlice.js";
 import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 export function Register() {
 
 	const nav = useNavigate();
 	const [newUser, registerResp] = useNewUserMutation();
-	const {exists, success, pending, token} = useSelector(state => state.login);
+	const {exists, success, pending, token} = useSelector(state => state.user);
 
 	const formSubmit = (event) => {
 		event.preventDefault()
@@ -26,7 +26,7 @@ export function Register() {
 	useEffect(() => {
 		if (success) setTimeout(() => {
 			nav("../login");
-		}, 1500);
+		}, 500);
 		if (token !== "") nav("../");
 	}, [nav, success, token]);
 

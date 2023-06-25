@@ -1,18 +1,21 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {PURGE} from "redux-persist/es/constants";
 
 const initialState = {
 	success: null,
 	token: "",
 	exists: false,
-	pending: null
+	pending: null,
+	user: ""
 };
 
-export const loginSlice = createSlice({
+export const userSlice = createSlice({
 	name: 'login',
 	initialState,
 	reducers: {
-		login: (state, {payload: token}) => {
-			state.token = token;
+		login: (state, data) => {
+			state.token = data.payload.accessToken;
+			state.user = data.payload.user;
 			state.pending = false;
 		},
 		logout: (state) => {
@@ -31,6 +34,11 @@ export const loginSlice = createSlice({
 			state.success = success;
 		},
 	},
+	extraReducers: (builder) => {
+		builder.addCase(PURGE, () => {
+			return initialState;
+		})
+	}
 })
 
 export const {
@@ -39,6 +47,6 @@ export const {
 	exists,
 	pending,
 	success
-} = loginSlice.actions;
+} = userSlice.actions;
 
-export default loginSlice.reducer;
+export default userSlice.reducer;
