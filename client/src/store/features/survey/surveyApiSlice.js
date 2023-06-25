@@ -19,7 +19,7 @@ export const surveyApi = createApi({
 	extractRehydrationInfo(action, {reducerPath}) {
 		if (action.type === REHYDRATE) return action.payload[reducerPath];
 	},
-	tagTypes: ['POST'],
+	// tagTypes: ['POST'],
 	endpoints: (builder) => ({
 		getAllWithLimits: builder.query({
 			query: (data) => ({
@@ -34,30 +34,73 @@ export const surveyApi = createApi({
 				}
 			}
 		}),
-		// loginUser: builder.mutation({
-		// 	query(body) {
-		// 		return {
-		// 			url: "authentication",
-		// 			method: "POST",
-		// 			body: body
-		// 		}
-		// 	},
-		// 	async onQueryStarted(body, {dispatch, queryFulfilled}){
-		// 		try {
-		// 			dispatch(userSlice.actions.pending(true));
-		// 			const {data} = await queryFulfilled;
-		// 			dispatch(userSlice.actions.success(true));
-		// 			dispatch(userSlice.actions.login(data));
-		// 		} catch (err) {
-		// 			dispatch(userSlice.actions.pending(false));
-		// 			dispatch(userSlice.actions.success(false));
-		// 			dispatch(userSlice.actions.logout);
-		// 		}
-		// 	}
-		// }),
+		getByHash: builder.query({
+			query: (hash) => ({
+				url: `/surveys?hash=${hash}`
+			}),
+			// async onQueryStarted(body, {dispatch, queryFulfilled}) {
+			// 	try {
+			// 		const {data} = await queryFulfilled;
+			// 	} catch (err) {
+			// 		console.log(err);
+			// 	}
+			// }
+		}),
+		createNew: builder.mutation({
+			query(body) {
+				return {
+					url: "surveys",
+					method: "POST",
+					body: body
+				}
+			},
+			async onQueryStarted(body, {dispatch, queryFulfilled}) {
+				try {
+					const {data} = await queryFulfilled;
+					console.log(data);
+				} catch (err) {
+					console.log(err);
+				}
+			}
+		}),
+		modifyExisting: builder.mutation({
+			query(body) {
+				return {
+					url: `surveys/${body.id}`,
+					method: "PATCH",
+					body: body.data
+				}
+			},
+			async onQueryStarted(body, {dispatch, queryFulfilled}) {
+				try {
+					const {data} = await queryFulfilled;
+					console.log(data);
+				} catch (err) {
+					console.log(err);
+				}
+			}
+		}),
+		deleteExisting: builder.mutation({
+			query(id) {
+				return {
+					url: `surveys/${id}`,
+					method: "DEL"
+				}
+			},
+			// async onQueryStarted(body, {dispatch, queryFulfilled}) {
+			// 	try {
+			// 		const {data} = await queryFulfilled;
+			// 	} catch (err) {
+			// 	}
+			// }
+		}),
 	}),
 })
 
 export const {
 	useGetAllWithLimitsQuery,
+	useGetByHashQuery,
+	useCreateNewMutation,
+	useModifyExistingMutation,
+	useDeleteExistingMutation,
 } = surveyApi

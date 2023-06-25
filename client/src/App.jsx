@@ -19,6 +19,7 @@ function App() {
                     <Route index element={<Home/>} />
                     <Route path={"survey"}>
                         <Route path={"new_survey"} element={<NewSurvey />}/>
+                        <Route path={"edit_survey/*"} element={<NewSurvey />}/>
                         <Route path={"my_surveys"} element={<MySurveys />}/>
                         <Route path={"*"} element={<Survey />}/>
                     </Route>

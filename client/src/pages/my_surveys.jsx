@@ -51,6 +51,7 @@ export function MySurveys() {
 
 export function SurveyRow(props) {
 
+	const nav = useNavigate();
 	const {content, createdAt, hash, id, name, user, userId} = props.survey;
 	const btnStyle = {backgroundColor: "unset", border: "unset", padding: "0 4px 0 4px"};
 	return (
@@ -64,7 +65,7 @@ export function SurveyRow(props) {
 				</Button>
 				<Button name={"copySurveyLink"} style={btnStyle} onClick={() => {
 					console.log("copySurveyLink");
-					navigator.clipboard.writeText(`http://localhost:5173/survey/${hash}`).then(
+					navigator.clipboard.writeText(`http://localhost:5173/survey/&?hash=${hash}`).then(
 						() => alert("Link copied to clipboard!")
 					);
 				}}>
@@ -72,6 +73,7 @@ export function SurveyRow(props) {
 				</Button>
 				<Button name={"editSurvey"} style={btnStyle} onClick={() => {
 					console.log("editSurvey");
+					nav(`../edit_survey/&?hash=${hash}`);
 				}}>
 					<AiOutlineEdit size={"1.4em"} style={{color: "blue"}}/>
 				</Button>
