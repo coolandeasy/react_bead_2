@@ -195,7 +195,7 @@ Az egész projektet tömörítsd be, kliensestül, szerverestül, és azt tölts
 - [X] Kérdőív: a kérdések lapozható formában jelennek meg a lapok megnevezéseivel, a lapok közötti navigáció megfelelő (2pt)
 - [X] Kérdőív: csak kitöltött oldal esetén lehet továbblapozni (1pt)
 - [X] Kérdőív: lapozón vizuálisan látszik, hogy mely lapnál tartunk (1pt)
-- [ ] Kérdőív: beküldés helyes működése (2pt)
+- [X] Kérdőív: beküldés helyes működése (2pt)
 - [X] Válaszok: a kiválasztott kérdőívre adott válaszok megjelennek (2pt)
 - [X] Profil: csak bejelentkezve érhető el, megfelelő tartalommal (2pt)
 - [X] Profil: Kijelentkezés gomb működik (1pt)
