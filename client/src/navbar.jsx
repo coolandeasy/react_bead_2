@@ -12,7 +12,6 @@ export function NavBar() {
 	const nav = useNavigate();
 
 	const handleLogout = () => {
-		console.log("Fuck you, Ezekiel!");
 		persistor.purge().then(() => nav("../login"));
 	};
 

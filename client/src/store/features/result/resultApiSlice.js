@@ -20,21 +20,20 @@ export const resultApi = createApi({
 	},
 	// tagTypes: ['POST'],
 	endpoints: (builder) => ({
-		getAllForSurvey: builder.query({
+		getAllResultForSurvey: builder.query({
 			query: (id) => ({
 				url: `/results?surveyId=${id}`
 			}),
 			async onQueryStarted(body, {dispatch, queryFulfilled}) {
 				try {
 					const {data} = await queryFulfilled;
-					console.log(data);
-					// dispatch(resultSlice.actions.getAllByID(data));
+					// console.log(data);
 				} catch (err) {
 					console.log(err);
 				}
 			}
 		}),
-		createNewForSurvey: builder.mutation({
+		createNewResultForSurvey: builder.mutation({
 			query(body) {
 				return {
 					url: "results",
@@ -45,7 +44,7 @@ export const resultApi = createApi({
 			async onQueryStarted(body, {dispatch, queryFulfilled}) {
 				try {
 					const {data} = await queryFulfilled;
-					console.log(data);
+					// console.log(data);
 				} catch (err) {
 					console.log(err);
 				}
@@ -55,6 +54,6 @@ export const resultApi = createApi({
 })
 
 export const {
-	useGetAllForSurveyQuery,
-	useCreateNewForSurveyMutation,
+	useGetAllResultForSurveyQuery,
+	useCreateNewResultForSurveyMutation,
 } = resultApi

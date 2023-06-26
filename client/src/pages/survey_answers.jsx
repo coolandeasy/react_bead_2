@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {useGetAllForSurveyQuery} from "../store/features/result/resultApiSlice.js";
+import {useGetAllResultForSurveyQuery} from "../store/features/result/resultApiSlice.js";
 
 export function SurveyAnswers() {
 
@@ -9,7 +9,7 @@ export function SurveyAnswers() {
 
 	const [searchParams] = useSearchParams();
 	let id = searchParams.get("surveyId");
-	const result = useGetAllForSurveyQuery(id);
+	const result = useGetAllResultForSurveyQuery(id);
 	let resultData = [[]];
 	let surveyName = "";
 
@@ -24,7 +24,7 @@ export function SurveyAnswers() {
 		let contents = results.map(result => JSON.parse(result.content));
 		answers = answers.map((_, i) => contents.map((content) => content[i]));
 		resultData = [questions, answers];
-		console.log(resultData);
+		// console.log(resultData);
 	} else {
 		surveyName = "There are no answers yet!";
 	}
@@ -45,16 +45,16 @@ export function SurveyAnswers() {
 }
 
 function CustomAnswerList({data}) {
-	console.log(data)
+	// console.log(data)
 	return (
 		<>
 			{data[0].map((q, i) => {
 				return (
 					<div key={q} className={"box"}>
 						<p>{q}</p>
-						{data[1][i].map(a => {
+						{data[1][i].map((a, idx) => {
 							return (
-								<div key={q + a} className={"box"}>
+								<div key={q + "" + a + "" + idx} className={"box"}>
 									<p>{a}</p>
 								</div>
 							)

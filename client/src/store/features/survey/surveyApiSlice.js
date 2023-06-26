@@ -57,7 +57,7 @@ export const surveyApi = createApi({
 			async onQueryStarted(body, {dispatch, queryFulfilled}) {
 				try {
 					const {data} = await queryFulfilled;
-					console.log(data);
+					// console.log(data);
 				} catch (err) {
 					console.log(err);
 				}
@@ -74,7 +74,7 @@ export const surveyApi = createApi({
 			async onQueryStarted(body, {dispatch, queryFulfilled}) {
 				try {
 					const {data} = await queryFulfilled;
-					console.log(data);
+					// console.log(data);
 				} catch (err) {
 					console.log(err);
 				}
@@ -82,7 +82,7 @@ export const surveyApi = createApi({
 		}),
 		deleteExisting: builder.mutation({
 			query(id) {
-				console.log(id);
+				// console.log(id);
 				return {
 					url: `surveys/${id}`,
 					method: "DELETE"

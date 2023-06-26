@@ -23,6 +23,10 @@ a {
     display: none;
 }
 
+input.invalid {
+    background-color: #ffdddd;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 8px;

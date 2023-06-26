@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
-import {useGetAllWithLimitsQuery} from "../store/features/survey/surveyApiSlice.js";
 import Table from "react-bootstrap/Table";
 import {CustomPagination} from "../components/CustomPagination.jsx";
-import {useGetAllForSurveyQuery} from "../store/features/result/resultApiSlice.js";
+import {useGetAllWithLimitsQuery} from "../store/features/survey/surveyApiSlice.js";
+import {useGetAllResultForSurveyQuery} from "../store/features/result/resultApiSlice.js";
 import {InputBase} from "@mui/material";
 
 export function Answers() {
@@ -30,16 +30,16 @@ export function Answers() {
 			<div style={{maxHeight: "550px", overflowX: "auto"}}>
 				<Table striped hover borderless>
 					<thead>
-						<tr>
-							<th>Name</th>
-							<th style={{textAlign: "right"}}>Answers</th>
-						</tr>
+					<tr>
+						<th>Name</th>
+						<th style={{textAlign: "right"}}>Answers</th>
+					</tr>
 					</thead>
 					<tbody>
-						{generateTableBody(surveyList)}
+					{generateTableBody(surveyList)}
 					</tbody>
 					<tfoot>
-						<CustomPagination/>
+					<CustomPagination/>
 					</tfoot>
 				</Table>
 			</div>
@@ -50,10 +50,10 @@ export function Answers() {
 export function SurveyRow(props) {
 
 	const {hash, id, name} = props.survey;
-	const surveyResults = useGetAllForSurveyQuery(id);
+	const surveyResults = useGetAllResultForSurveyQuery(id);
 	if (surveyResults.status === "fulfilled") {
-		console.log(surveyResults);
-		document.querySelector("#count"+id).value = surveyResults.currentData.total;
+		// console.log(surveyResults);
+		document.querySelector("#count" + id).value = surveyResults.currentData.total;
 	}
 
 	return (
@@ -64,7 +64,7 @@ export function SurveyRow(props) {
 					id={"count" + id}
 					readOnly={true}
 					size={"small"}
-					inputProps={{min: 0, style: { textAlign: 'right',  marginRight: '2em' }}}
+					inputProps={{min: 0, style: {textAlign: 'right', marginRight: '2em'}}}
 				/>
 			</td>
 		</tr>

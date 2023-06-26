@@ -60,8 +60,8 @@ export function SurveyRow(props) {
 			<td><a href={`http://localhost:5173/survey/&?hash=${hash}`}>{name}</a></td>
 			<td style={{textAlign: "right"}}>
 				<Button name={"checkSurveyAnswers"} style={btnStyle} onClick={() => {
-					console.log("checkSurveyAnswers");
-					nav(`../../answers/&?hash=${hash}`);
+					// console.log("checkSurveyAnswers");
+					nav(`../../answers/&?surveyId=${id}`);
 				}}>
 					<RiQuestionAnswerLine size={"1.4em"} style={{color: "black"}}/>
 				</Button>
@@ -78,7 +78,7 @@ export function SurveyRow(props) {
 					<AiOutlineEdit size={"1.4em"} style={{color: "blue"}}/>
 				</Button>
 				<Button name={"deleteSurvey"} style={btnStyle} onClick={() => {
-					console.log("deleteSurvey");
+					// console.log("deleteSurvey");
 					deleteSurvey(id);
 					window.location.reload();
 				}}>

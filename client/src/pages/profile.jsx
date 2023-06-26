@@ -9,8 +9,6 @@ export function Profile() {
 
 	const handleLogout = (e) => {
 		e.preventDefault();
-		console.log("Fuck you, Ezekiel!");
-		// store.dispatch(userSlice.actions.logout());
 		persistor.purge().then(() => nav("../login"));
 	};
 
