@@ -19,6 +19,10 @@ a {
     text-decoration: none;
 }
 
+.page {
+    display: none;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
