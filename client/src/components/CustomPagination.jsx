@@ -9,10 +9,8 @@ export function CustomPagination() {
 	const [page, setPage] = useState(1);
 	const dispatch = useDispatch();
 	const handlePageChange = (e, v) => {
-		let currPage = page;
 		setPage(v);
-		if (currPage > v) dispatch({type: "survey/setSkip", skip: (skip - limit) > 0 ? skip - limit : 0});
-		else dispatch({type: "survey/setSkip", skip: skip + limit});
+		dispatch({type: "survey/setSkip", skip: (v - 1) * limit});
 	};
 
 	return (
